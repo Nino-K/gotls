@@ -277,8 +277,11 @@ _, servCertPEM, err := CreateCert(servCertTmpl, rootCert, &servKey.PublicKey, ro
 if err != nil {
 	log.Fatalf("error creating cert: %v", err)
 }
+```
+
 We now have a PEM encoded certificate. To use this in a server, we have to have the private key to prove we own it.
 
+```
 // provide the private key and the cert
 servKeyPEM := pem.EncodeToMemory(&pem.Block{
 	Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(servKey),
